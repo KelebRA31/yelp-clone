@@ -7,7 +7,9 @@ function NavBar() {
 
 
   return (
-    <div>HELLO WORLD</div>
+    <div>
+      
+    </div>
   );
 }
 
