@@ -16,6 +16,14 @@ export default function YelpContextProvider({children}) {
       [e.target.name]: e.target.value,
     }));
   };
+
+  const changeHandlerReg = (e) => {
+    setInputsReg((prev) => ({
+      ...prev,
+      [e.target.name]: e.target.value,
+    }));
+  };
+  
   useEffect(() => {
     fetch('http://localhost:3002/auth', {
       credentials: 'include',
@@ -53,7 +61,7 @@ export default function YelpContextProvider({children}) {
         'Content-Type': 'application/json',
       },
       credentials: 'include',
-      body: JSON.stringify(inputs),
+      body: JSON.stringify(inputsReg),
     });
     if (response.ok) {
       const data = await response.json();
@@ -82,7 +90,8 @@ export default function YelpContextProvider({children}) {
       changeHandler,
       submitHandler,
       logoutHandler,
-      submitHandlerReg
+      submitHandlerReg,
+      changeHandlerReg
     }}
     >
       {children}
